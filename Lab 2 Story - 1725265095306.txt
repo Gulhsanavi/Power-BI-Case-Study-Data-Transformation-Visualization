@@ -1,0 +1,170 @@
+With these, Student will learn how to :
+
+	Apply various transformations
+
+	Apply queries to load them to the data model
+
+
+Note: TO make sure that we are all in unity , use the exact same columns as mentioned below
+
+Task 1: Configure DimEmployee
+	
+	1.Rename the query to "Salesperson"
+	2.Filter the data so that only the Sales Employees are part of the table ( Use SalesPersonFlag Column )
+	3.Too many columns make the pipeline slower and the data not easy to intepret. Only Keep these columns, remove the other. 
+		EmployeeKey
+		EmployeeNationalIDAlternateKey
+		FirstName
+		LastName
+		Title
+		EmailAddress
+	4.Create a Single Name column called "SalesPerson" combining the First Name and Last Name Columns
+	5.Rename columns:
+		a."EmployeeNationalIDAlternateKey" to "EmployeeID"
+		b."EmailAddress" to "UPN"
+
+Task 2: Configure DimProduct query
+
+	1.Rename the query to "Products"
+	2.Remove DimProductSubcategory and FactInternetSales columns
+	
+Task 3: Configure DimProduct query
+
+	1.Rename the query to Product
+	2.Only Keep products that are finished ( Filter on the Finished Goods Columns)
+	3.Keep only the following columns
+		ProductKey
+		EnglishProductName
+		StandardCost
+		Color
+		DimProductSubcategory
+	4.Connect to the DimProductCategory Table using the DimProductSubCategory value link, 
+	expand the table and get only these columns 
+( Note: Do not use ColumnNamePrefix, as there are no duplicate col names )
+		
+		EnglishProductSubcategoryName
+		DimProductCategory 
+
+	5. Observe that DimProductCategory column itself is a table. Expand that as well and only fetch the EnglishProductCategoryName colum
+
+	6. Rename the columns as follows 
+	
+		EnglishProductName to "Product"
+		StandardCost to "Standard Cost" 
+		EnglishProductSubcategoryName to "Subcategory"
+		EnglishProductCategoryName to "Category"
+
+Task 4: Configure the DimReseller query
+
+	1.Rename the query to Reseller
+	2.Keep only the following columns
+		ResellerKey
+		BusinessType
+		ResellerName
+		DimGeography
+
+	3.Connect to the DimGeography column and include only the following
+		City
+		StateProvinceName
+		EnglishCountryRegionName
+
+	4.Rename the columns as follows 
+	
+		BusinessType to Business Type (include a space)
+		ResellerName to Reseller
+		StateProvinceName to State-Province
+		EnglishCountryRegionName to Country-Region
+
+	5.Notice the Duplicate warehouse category in the Business Type Column.Correct it using the Replace Values option.
+
+Task 5: Configure the DimSalesTerritory query
+
+	1.Rename the query to Region 
+	2.Exclude the corporate HQ record in the data. You can filter on salesTerritoryAlternateKey to exclude 0
+	3.Keep only the following columns
+		SalesTerritoryKey
+		SalesTerritoryRegion
+		SalesTerritoryCountry
+		SalesTerritoryGroup
+	4.Rename the columns as follows 
+	
+		SalesTerritoryRegion to Region
+		SalesTerritoryCountry to Country
+		SalesTerritoryGroup to Group
+
+Task 6: Configure the FactReseller Sales query
+
+	1.Rename the query to Sales
+	2.Keep only the following columns
+		SalesOrderNumber
+		OrderDate
+		ProductKey
+		ResellerKey
+		EmployeeKey
+		SalesTerritoryKey
+		OrderQuantity
+		UnitPrice
+		TotalProductCost
+		SalesAmount
+		DimProduct
+	(Recall that a small percentage of FactResellerSales rows had missing TotalProductCost values. 
+	The DimProduct column has been included to retrieve the product standard cost, to fix the missing values)
+	
+	3.Create a new custom column called "Cost", use the standard cost in the DimProduct table with
+	null values in TotalProductCost set to [OrderQuantity] * [StandardCost]
+	
+	Use this formula:
+		if [TotalProductCost] = null then [OrderQuantity] * [StandardCost] else [TotalProductCost]
+
+	4. Drop the TotalProductCost and StandardCost columns.
+
+	5.Rename the following three columns:
+		OrderQuantity to Quantity
+		UnitPrice to Unit Price (include a space)
+		SalesAmount to Sales
+
+	6.Change Datatypes of Columns as follows
+		quantity - > Whole Number
+		Unit Price,Sales and Cost -> Fixed Decimal Number
+
+Task 7: Configure the ResellerSalesTargets query
+	1.Rename the query to Targets
+	2.Unpivot the 12-month columns (M01-M12), name the new column as MonthNumber (hint: transform tab)
+	3.filter out the records with '-' Hyphen 
+	4.Change the Dtype to whole Number, ( remember to use replace values first on the column)
+	5. Use the "Custom Column from Example" Feature to  Get a date column Called "TargetMonth" 
+		with first day of the months , according to the MonthNumber Column
+	6.Change Datatypes of Columns as follows
+		Target Month - > Date
+		Target -> Fixed Decimal Number
+	7. Multiply the target values column by 1000 ( Use the transform tab in the ribbon )
+
+Task 8: Configure the ColorFormats query
+	1.Check if the column headers are correct and fix the issue
+	2.Merge the ColorFormats Query to the Product table and expand the columns
+		NOTE:
+			Privacy levels can be configured for data source to determine whether data can be 
+			shared between sources. Setting each data source as Organizational allows them to 
+			share data, if necessary. Note that Private data sources can never be shared with 
+			other data sources. It doesn’t mean that Private data cannot be shared; it means 
+			that the Power Query engine cannot share data between the sources.
+	3.Now since the colorformats is unneccasary disable its load to the report ( untoggle the "Enable load to report" checkbox)
+
+
+Wrapping Up:
+
+Press Close and Apply, loading the dataset to the report 
+
+
+	
+ 
+	
+		
+	
+
+
+
+
+
+
+

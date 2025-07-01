@@ -1,0 +1,74 @@
+Model data in Power BI Desktop
+
+
+You will learn how to:
+	Create model relationships
+	Configure table and column properties
+	Create hierarchies
+	Create quick measures
+	
+Task 1 : Model the data 
+	
+	Create relationships in all the tables except the "SalesPersonRegion" and "Target" tables
+
+Task 2 : Configure the Product table
+	1.Create a Hierarchy named "Products" with Category, Sub Category and Product 
+	2.Create a Folder named "Formatting" with Font Color Format and Background Color Format
+
+Task 3: Configure the Region table
+	1.Create a Hierarchy named "Regions" with Group, Country and Region
+	2.Set the Data Category of the Country Column to "Country/Region". This helps PowerBi with Map Building
+	
+Task 4: Configure the ReSeller table 
+	1.Create a Hierarchy named "ReSellers" with Business Type, ReSeller
+	2.Create a Hierarchy named "Geography" with  Country-Region ,State-Province ,City , ReSeller
+	3.Set the Data Category accordingly for Country-Region ,State-Province ,City , ReSeller columns
+	
+Task 5: Configure the Sales table
+	1. Change the Summarize by option to AVerage instead, in Unit Price
+	
+Task 6:Hide the following columns as they are not needed directly for Analysis
+
+	Product | ProductKey
+
+	Region | SalesTerritoryKey
+
+	Reseller | ResellerKey
+
+	Sales | EmployeeKey
+
+	Sales | ProductKey
+
+	Sales | ResellerKey
+
+	Sales | SalesOrderNumber
+
+	Sales | SalesTerritoryKey
+
+	Salesperson | EmployeeID
+
+	Salesperson | EmployeeKey
+
+	Salesperson | UPN
+
+	SalespersonRegion | EmployeeKey
+
+	SalespersonRegion | SalesTerritoryKey
+
+	Targets | EmployeeID
+	
+Task 7: Notice How there are auto Created heirarchies on Date, looks fine ? 
+	Yes but there is a problem PowerBI automatically starts the financial year from Jan 1 . 
+	But this might differ with client, here in india we start financial year from Apr 1. so the heirarchies will not be valid wrt Qtrs
+	Disable this behaviour.
+	We will create our own Date Table later on
+
+Task 8: Create Custom Measures using Quick Measures in the sales table
+	1. Profit = Sales - Cost
+	2. Profit Margin = Profit / Sales
+
+
+	
+
+	
+	

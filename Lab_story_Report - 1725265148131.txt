@@ -1,0 +1,31 @@
+In this lab you learn how to:
+	Design a report
+	Configure visual fields and format properties
+
+Note:You can use the Completed sheet screenshot shared as reference to the following excersices
+
+Task 1: Sheet 1
+	
+	1. Rename the first sheet to "Overview"
+	2. Insert the Adventure Works company logo in the top left corner
+	3. Create a dropdown slicer on Year
+	4. Create a list slicer on Region
+	5. Create a combo Line and stacked column chart and use the Sales and profit margin column over the different months
+	6.Create Map chart for the sales at the country level and also show the category distribution as legend
+	7.Create a column chart for the sales by the different categories 
+
+Task 2 : Category Tool Tip
+	1. Create another sheet and rename it to "Profit"
+	2. Create a list slicer on Region
+	3. Create a tabular visualisation with Year, Orders, Sales , Cost, Profit and Profit Margin 
+	4. Use this sheet as a tool tip on Category
+	5. Set the canvas size appropriately
+
+Task 3 : Month Tool tip 
+
+	1. Create a donut chart on sales by Category.
+       2.   Create this sheet as a tool tip on Months.
+	3.Set the canvas size appropriately
+
+
+

@@ -1,0 +1,21 @@
+In this lab, you learn how to:
+
+	Create calculated tables
+
+	Create calculated columns
+
+	Create measures
+	
+	
+Task 1 : Create a Calculated Date Table with April 1st as Start of the year ( AUTOCALENDER() function).
+
+Task 2 : Create a calculated columns for the Date table. Create Year , Month, Day ,WeekDayName (hint:format()), Quarters with Ind 		Fiscal Year.
+
+Task 3: Configure the Date table
+	1. Create an Hierarchy named "Fiscal" for the dates
+	2. Create apropriate model relationships. Date Table to Sales Table , Date Table to Targets Table
+	3. Hide the Date columns in the Sales table and the target Table 
+	4. Mark the table as the date table 
+
+Task 4 : Create simple measures for Average ,Max, Min  and Median, Distinct Count ( Name this "Orders"), Count ( Name this "OrderLines") . 
+	Place the first four above in a folder called "Pricing"
